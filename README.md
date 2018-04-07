@@ -12,12 +12,31 @@ podemos traducir al español como *Ensayo Controlado Aleatorizado*.
 ¿En qué consiste la intervención que se evaluó?
 -----------------------------------------------
 
-Los investigadores (Orazio Attanasio, Arlen Guarín, Adriana Kugler,
-Carlos Medina, Costas Meghir) evaluaron una intervención usando un
-ensayo controlado aleatorizado.
-
-Un resumen de la evaluación (en inglés) puede encontrarse
+Los investigadores evaluaron una intervención educativa usando un ensayo
+controlado aleatorizado. La intervención estaba dirigida a jóvenes en
+situación de vulnerabilidad y consistía en un programa de entrenamiento
+en capacidades laborales. Su objetivo era mejorar los prospectos
+laborales de los jóvenes menos favorecidos. Un resumen de la evaluación
+(en inglés) puede encontrarse
 [aquí](https://www.povertyactionlab.org/evaluation/vocational-training-disadvantaged-youth-colombia).
+A continuación presentamos algunos puntos clave para tener en cuenta:
+
+-   **Población intervenida:** 80 mil hombres y mujeres entre los 18 y
+    los 25 años de edad, desempleados, pertenecientes al 20% más pobre
+    de la población.
+
+-   **Ubicación geográfica:** Los jóvenes intervenidos habitaban en
+    Barranquilla, Bogotá, Bucaramanga, Cali, Cartagena, Manizales o
+    Medellín.
+
+-   **Temporalidad:** Entre 2002 y 2006.
+
+-   **Investigadores principales:** Orazio Attanasio, Arlen Guarín,
+    Adriana Kugler, Carlos Medina, Costas Meghir.
+
+-   **Instituciones patrocinadoras:** DNP, Econometría S.A., SEI
+    Consultores, Economic and Social Research Council, Universidad de
+    Houston.
 
 Los datos
 ---------
@@ -30,6 +49,7 @@ El software
 -----------
 
 El programa informático que los investigadores utilizaron para hacer el
-estudio se llama STATA, pero nosotros usaremos una herramienta
-diferente, llamada R. En teoría, los resultados deben ser siempre los
-mismos aunque se use software diferente.
+estudio se llama [STATA](https://www.stata.com/), pero nosotros usaremos
+una herramienta diferente, llamada [R](https://www.r-project.org/). En
+teoría, los resultados deben ser siempre los mismos aunque se use
+software diferente.
