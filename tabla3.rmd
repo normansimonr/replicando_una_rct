@@ -1,0 +1,47 @@
+---
+title: "Replicando la tabla de balance"
+author: "Norman Simón Rodríguez"
+date: "- Mayo 07 de 2018"
+output: github_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, include=TRUE, eval=FALSE)
+```
+
+# Replicando la tabla 3 (tabla de balance)
+
+En la página 199 está la tabla de balance (pre) de la RCT. Carguemos los datos:
+
+```{r}
+library(foreign) # Importamos el paquete foreign para poder usar la función read.dta()
+datos <- read.dta("datos/AEJApp-20090168_data.dta")
+datos_presentes <- subset(datos, datos$dcontinue==1)
+```
+
+Como hay diferencias sustanciales en las características de las personas según la ciudad en donde vivan (por ejemplo, en Bogotá hay más oportunidades laborales que en Baranquilla), hay que eliminar esas características antes de hacer la comparación para "nivelar" a todas las personas o ponerlas en las mismas condiciones. Esto se puede hacer ya que el efecto de pertenecer a una ciudad o a una institución educativa en particular es el mismo para todos los que pertenecen a ella (se supone), y de ese modo, si a todos los individuos se les resta el efecto ciudad/institución/curso, vamos a quedar con sus características "reales" o "intrínsecas". Para hacer esto usaremos un método conocido como regresión lineal con efectos fijos.
+
+Calculemos la proporción de personas empleadas según estatus de tratamiento y sexo:
+
+```{r}
+mujeres = subset(datos_presentes, datos_presentes$dwomen==1)
+hombres = subset(datos_presentes, datos_presentes$dwomen==0)
+
+#install.packages("lfe")
+library(lfe)
+felm( mujeres$empl_04 ~ mujeres$select | mujeres$city + mujeres$codigo_ecap + mujeres$codigo_curs )
+
+felm( hombres$empl_04 ~ hombres$select | hombres$city + hombres$codigo_ecap + hombres$codigo_curs )
+
+#aggregate(datos$empl_04, by=list(datos$select, datos$dwomen), FUN=mean, na.rm=TRUE)
+```
+
+Miremos otras variables:
+```{r}
+felm( mujeres$hours_04 ~ mujeres$select | mujeres$city + mujeres$codigo_ecap + mujeres$codigo_curs )
+
+felm( hombres$hours_04 ~ hombres$select | hombres$city + hombres$codigo_ecap + hombres$codigo_curs )
+
+lm( hombres$hours_04 ~ hombres$select + factor(hombres$city) + factor(hombres$codigo_ecap) + factor(hombres$codigo_curs) )
+```
+
