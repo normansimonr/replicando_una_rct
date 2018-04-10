@@ -6,7 +6,7 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, include=TRUE, eval=FALSE)
 ```
 
 ## ¿Qué es una RCT?
@@ -21,19 +21,23 @@ Los investigadores evaluaron una intervención educativa usando un ensayo contro
 
 * **Ubicación geográfica:** Los jóvenes intervenidos habitaban en Barranquilla, Bogotá, Bucaramanga, Cali, Cartagena, Manizales o Medellín.
 
-* **Temporalidad:** Entre 2002 y 2006.
+* **Temporalidad:** El programa de educación se realizó entre 2002 y 2006, pero la evaluación sólo tuvo en cuenta la cohorte de 2005.
 
 * **Investigadores principales:** Orazio Attanasio, Arlen Guarín, Adriana Kugler, Carlos Medina, Costas Meghir.
 
 * **Instituciones patrocinadoras:** DNP, Econometría S.A., SEI Consultores, Economic and Social Research Council, Universidad de Houston.
 
-
+* **Forma de aleatorización:** Se les instruyó a las 114 instituciones educativas participantes que hicieran una lista de estudiantes elegibles, con la condición de que el número de personas en la lista fuera mayor a la cantidad de personas que podrían recibir en los cursos de capacitación. Así, por ejemplo, una institución con capacidad para 100 estudiantes haría una lista de 150. Posteriormente se hizo un sorteo entre los aspirantes para determinar quiénes entrarían a los cursos (grupo de tratamiento) y quiénes no (grupo de control).
 
 
 
 ## Los datos
 
 Los datos que usaremos en este tutorial se encuentran en este [link](https://www.aeaweb.org/articles?id=10.1257/app.3.3.188).
+
+El diccionario de datos es el siguiente:
+
+
 
 ## El software
 
@@ -97,3 +101,27 @@ A juzgar por este diagrama, la distribución de salarios post-tratamiento es:
 * Bimodal.
 
 ¿Qué podría estar causando esto?
+
+Posiblemente necesitemos separar los datos en grupo de tratamiento y control.
+
+```{r}
+control = subset(datos, datos$select == 'control')
+tratamiento = subset(datos, datos$select == 'selected')
+
+options(scipen=5)
+hist(control$salary_06
+     , main="Distribución de los salarios en la línea final (CONTROL)"
+     , xlab="Salario real en COP"
+     , ylab="Frecuencia absoluta"
+     , breaks=15
+     , col="gray")
+
+options(scipen=5)
+hist(tratamiento$salary_06
+     , main="Distribución de los salarios en la línea final (TRAT.)"
+     , xlab="Salario real en COP"
+     , ylab="Frecuencia absoluta"
+     , breaks=15
+     , col="gray")
+```
+
