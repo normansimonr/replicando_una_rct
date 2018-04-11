@@ -23,4 +23,4 @@ Charla dictada el 07 de mayo de 2018 en la Universidad Nacional de Colombia, sed
 
 ## Licencia
 
-El contenido de este tutorial está licenciado bajo la licencia Creative Commons 4.0 BY-NC-SA, a excepción de los datos fuente y códigos de Stata, que son propiedad de los autores del estudio.
+El contenido de este tutorial está licenciado bajo la licencia Creative Commons 4.0 BY-NC-ND, a excepción de los datos fuente y códigos de Stata, que son propiedad de los autores del estudio.

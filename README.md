@@ -17,13 +17,14 @@ Contenido
 ---------
 
 1.  [Preliminares](preliminares.md)
-2.  [Estadísticas descriptivas en línea de base](tabla2.md)
-3.  [Tabla de balance](tabla3.md)
-4.  [Tabla de resultados](tablaresultados.md)
+2.  [Exploración inicial de los datos](exploracion.md)
+3.  [Estadísticas descriptivas en línea de base](tabla2.md)
+4.  [Tabla de balance](tabla3.md)
+5.  [Tabla de resultados](tablaresultados.md)
 
 Licencia
 --------
 
 El contenido de este tutorial está licenciado bajo la licencia Creative
-Commons 4.0 BY-NC-SA, a excepción de los datos fuente y códigos de
+Commons 4.0 BY-NC-ND, a excepción de los datos fuente y códigos de
 Stata, que son propiedad de los autores del estudio.

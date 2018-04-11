@@ -84,6 +84,9 @@ A continuación presentamos algunos puntos clave para tener en cuenta:
 -   **Temporalidad:** El programa de educación se realizó entre 2002 y
     2006, pero la evaluación sólo tuvo en cuenta la cohorte de 2005.
 
+-   **Intervención:** Tres meses de capacitación teórica y tres meses de
+    prácticas no remuneradas (pero con auxilio de transporte).
+
 -   **Investigadores:** Orazio Attanasio, Arlen Guarín, Adriana Kugler,
     Carlos Medina, Costas Meghir.
 
@@ -125,3 +128,12 @@ teoría, los resultados deben ser siempre los mismos aunque se use
 software diferente, pero suele pasar que hay pequeñas diferencias debido
 a que cada software implementa las fórmulas matemáticas de manera
 ligeramente distinta en la arquitectura de sus algoritmos.
+
+Contenido
+---------
+
+1.  [Preliminares](preliminares.md)
+2.  [Exploración inicial de los datos](exploracion.md)
+3.  [Estadísticas descriptivas en línea de base](tabla2.md)
+4.  [Tabla de balance](tabla3.md)
+5.  [Tabla de resultados](tablaresultados.md)

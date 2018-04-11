@@ -15,6 +15,10 @@ library(foreign) # Importamos el paquete foreign para poder usar la función rea
 datos <- read.dta("datos/AEJApp-20090168_data.dta")
 ```
 
+**Nota:** El archivo con los comandos de Stata usados por los
+investigadores se encuentra en la carpeta `datos` (se llama
+`AEJApp-20090168_program.txt`).
+
 Explorando los datos
 ====================
 

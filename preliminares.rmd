@@ -44,6 +44,8 @@ Los investigadores evaluaron una intervención educativa usando un ensayo contro
 
 * **Temporalidad:** El programa de educación se realizó entre 2002 y 2006, pero la evaluación sólo tuvo en cuenta la cohorte de 2005.
 
+* **Intervención:** Tres meses de capacitación teórica y tres meses de prácticas no remuneradas (pero con auxilio de transporte).
+
 * **Investigadores:** Orazio Attanasio, Arlen Guarín, Adriana Kugler, Carlos Medina, Costas Meghir.
 
 * **Instituciones patrocinadoras:** DNP, Econometría S.A., SEI Consultores, Economic and Social Research Council, Universidad de Houston.
