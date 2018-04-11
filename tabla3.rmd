@@ -61,3 +61,10 @@ t(tabla_muj)
 
 Como tarea les queda hacer este mismo ejercicio para las demás variables.
 
+## Contenido
+
+1. [Preliminares](preliminares.md)
+1. [Exploración inicial de los datos](exploracion.md)
+1. [Estadísticas descriptivas en línea de base](tabla2.md)
+1. [Tabla de balance](tabla3.md)
+1. [Tabla de resultados](tablaresultados.md)

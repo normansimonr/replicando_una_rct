@@ -69,3 +69,12 @@ Tarea
 
 Como tarea les queda hacer este mismo ejercicio para las demás
 variables.
+
+Contenido
+---------
+
+1.  [Preliminares](preliminares.md)
+2.  [Exploración inicial de los datos](exploracion.md)
+3.  [Estadísticas descriptivas en línea de base](tabla2.md)
+4.  [Tabla de balance](tabla3.md)
+5.  [Tabla de resultados](tablaresultados.md)
