@@ -1,0 +1,119 @@
+---
+title: "Exploración inicial de los datos"
+author: "Norman Simón Rodríguez"
+date: "- Mayo 07 de 2018"
+output: github_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, include=TRUE, eval=FALSE)
+```
+
+## Cargando los datos
+
+Los datos se encuentran en el archivo `datos/AEJApp-20090168_data.dta`, que es un archivo de Stata. Para leerlo en R vamos a usar el siguiente comando:
+
+```{r}
+library(foreign) # Importamos el paquete foreign para poder usar la función read.dta()
+datos <- read.dta("datos/AEJApp-20090168_data.dta")
+```
+
+# Explorando los datos
+Podemos mirar algunas estadísticas descriptivas rápidas de los datos con el comando `summary()`:
+
+```{r}
+summary(datos)
+```
+
+Si, por ejemplo, quisiéramos saber cuál es la proporción de mujeres en la muestra de estudio, podríamos simplemente hallar el promedio aritmético de la variable `dwomen`, que es una variable dummy:
+
+```{r}
+mean(datos$dwomen)
+```
+
+Si además estamos interesados en saber cuántos hombres y cuántas mujeres hay (no sólo el porcentaje), podemos hacer una tabla de frecuencias absolutas con la función `table()` (recordando que un valor de `1` corresponde a mujer y uno de `0` a hombre):
+
+```{r}
+table(datos$dwomen)
+```
+
+Podemos también crear un histograma para mirar la distribución de salarios en la línea de base (la variable `salary_04`), es decir, en el "pre":
+
+```{r}
+options(scipen=5) # Comente esta línea para ver qué pasa con el gráfico.
+hist(datos$salary_04
+     , main="Distribución de los salarios en la línea base"
+     , xlab="Salario real en COP"
+     , ylab="Frecuencia absoluta"
+     , breaks=15
+     , col="gray")
+```
+
+Podemos hacer este mismo histograma, pero para los salarios *después de haber desarrollado la intervención* (en el "post"). La variable de interés es `salary_06`.
+
+```{r}
+options(scipen=5) # Comente esta línea para ver qué pasa con el gráfico.
+hist(datos$salary_06
+     , main="Distribución de los salarios en la línea final"
+     , xlab="Salario real en COP"
+     , ylab="Frecuencia absoluta"
+     , breaks=15
+     , col="gray")
+```
+
+A juzgar por este diagrama, la distribución de salarios post-tratamiento es:
+
+* Unimodal.
+* Bimodal.
+
+¿Qué podría estar causando esto?
+
+Posiblemente necesitemos separar los datos en grupo de tratamiento y control.
+
+```{r}
+control = subset(datos, datos$select == 'control')
+tratamiento = subset(datos, datos$select == 'selected')
+
+options(scipen=5)
+hist(control$salary_06
+     , main="Distribución de los salarios en la línea final (CONTROL)"
+     , xlab="Salario real en COP"
+     , ylab="Frecuencia absoluta"
+     , breaks=15
+     , col="gray")
+
+options(scipen=5)
+hist(tratamiento$salary_06
+     , main="Distribución de los salarios en la línea final (TRAT.)"
+     , xlab="Salario real en COP"
+     , ylab="Frecuencia absoluta"
+     , breaks=15
+     , col="gray")
+```
+
+¿Qué podemos inferir de esto?
+
+¿Qué tal si miramos la proporción de personas empleadas en el pre y la comparamos con la proporción de personas empleadas en el post?
+
+```{r}
+mean(datos$empl_04)
+mean(datos$empl_06)
+```
+
+Como R se confunde cuando le pedimos que halle promedios en vectores que tienen NAs, debemos decirle explícitamente que los ignore:
+
+```{r}
+mean(datos$empl_04, na.rm=TRUE)
+mean(datos$empl_06, na.rm=TRUE)
+mean(datos$empl_06, na.rm=TRUE) - mean(datos$empl_04, na.rm=TRUE)
+```
+
+Vemos que hay una mayor proporción de personas empleadas en el post, pero no sabemos si se debió sólo a nuestra intervención, o si hubo *variables de confusión* que co-causaron este resultado. Por eso hacemos las RCT, para eliminar el efecto de estas variables y aislar el efecto de la intervención. Eso es lo que haremos en las siguientes páginas.
+
+## Contenido
+
+1. [Preliminares](preliminares.md)
+1. [Exploración inicial de los datos](exploracion.md)
+1. [Estadísticas descriptivas en línea de base](tabla2.md)
+1. [Tabla de balance](tabla3.md)
+1. [Tabla de resultados](tablaresultados.md)

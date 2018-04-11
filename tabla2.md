@@ -10,9 +10,9 @@ Esta tabla (pág. 196) nos muestra estadísticas descriptivas de los
 participantes en el programa, disgregando por sexo. Sólo se tienen en
 cuenta las personas a las que se les pudo hacer la entrevista pre en
 2004 y la entrevista post en 2006. Para eliminar a la gente que
-“desapareció” en ese tiempo, vamos a usar la función `subset()`, y
-podemos calcular a cuánta gente no se le pudo hacer encuesta de
-seguimiento:
+“desapareció” en ese tiempo, vamos a usar la función `subset()`; con
+`NROW()` podemos también calcular a cuánta gente no se le pudo hacer
+encuesta de seguimiento:
 
 ``` r
 library(foreign) # Importamos el paquete foreign para poder usar la función read.dta()
@@ -68,7 +68,8 @@ round( desv , 2 )
 ```
 
 En este caso los números son ligeramente diferentes. Aparentemente esto
-se debe a que los investigadores hicieron un redondeo más extremo:
+se debe a diferencias algorítmicas entre Stata y R o a que los
+investigadores hicieron un redondeo más extremo:
 
 ``` r
 desv <- aggregate(datos_presentes$educ_lb, by=list(datos_presentes$dwomen), FUN=sd, na.rm=TRUE)
@@ -123,7 +124,7 @@ table(datos_presentes[,c("select","dwomen")])
 ```
 
 ¿Para qué sirve el comando `c()`? Para crear vectores. En este caso
-creamos u vector con los nombres de las columnas y le dijimos a R que
+creamos un vector con los nombres de las columnas y le dijimos a R que
 sólo tuviera en cuenta esas columnas. Un vector sencillo:
 
 ``` r
@@ -132,3 +133,12 @@ vector_sencillo
 vector_con_letras <- c(vector_sencillo, "hola")
 vector_con_letras
 ```
+
+Contenido
+---------
+
+1.  [Preliminares](preliminares.md)
+2.  [Exploración inicial de los datos](exploracion.md)
+3.  [Estadísticas descriptivas en línea de base](tabla2.md)
+4.  [Tabla de balance](tabla3.md)
+5.  [Tabla de resultados](tablaresultados.md)

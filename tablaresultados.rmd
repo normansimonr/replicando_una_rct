@@ -1,0 +1,42 @@
+---
+title: "Replicando las tablas de resultados"
+author: "Norman Simón Rodríguez"
+date: "- Mayo 07 de 2018"
+output: github_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, include=TRUE, eval=FALSE)
+```
+
+## La tabla 4A
+
+Cargamos los datos nuevamente (no es necesario si ya los tenemos cargados):
+
+```{r}
+library(foreign) # Importamos el paquete foreign para poder usar la función read.dta()
+datos <- read.dta("datos/AEJApp-20090168_data.dta")
+datos_presentes <- subset(datos, datos$dcontinue==1)
+```
+
+Ahora separamos los datos entre hombres y mujeres:
+
+```{r}
+datos_presentes$select <- as.character(datos_presentes$select)
+datos_presentes$select[datos_presentes$select=="control"] <- 0
+datos_presentes$select[datos_presentes$select=="selected"] <- 1
+datos_presentes$select <- as.numeric(datos_presentes$select)
+
+mujeres = subset(datos_presentes, (datos_presentes$dwomen==1) & (!is.na(datos_presentes$city)) & (!is.na(datos_presentes$codigo_ecap)) & (!is.na(datos_presentes$codigo_curs)) )
+
+hombres = subset(datos_presentes, (datos_presentes$dwomen==0) & (!is.na(datos_presentes$city)) & (!is.na(datos_presentes$codigo_ecap)) & (!is.na(datos_presentes$codigo_curs)) )
+```
+
+Vamos a replicar la primera fila de la tabla, las medias en el grupo de control para el *post* (ahora `Group.1` ¿qué representa?):
+
+```{r}
+pf <- aggregate(mujeres, by=list(mujeres$select), FUN=mean, na.rm=TRUE)
+t(round(pf,3))
+```
+
+Vemos que para esta primera línea los datos coinciden perfectamente.

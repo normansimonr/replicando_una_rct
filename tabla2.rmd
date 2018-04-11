@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE, include=TRUE, eval=FALSE)
 
 # Replicando la tabla 2 (Pre-post disgregado por sexo)
 
-Esta tabla (pág. 196) nos muestra estadísticas descriptivas de los participantes en el programa, disgregando por sexo. Sólo se tienen en cuenta las personas a las que se les pudo hacer la entrevista pre en 2004 y la entrevista post en 2006. Para eliminar a la gente que "desapareció" en ese tiempo, vamos a usar la función `subset()`, y podemos calcular a cuánta gente no se le pudo hacer encuesta de seguimiento:
+Esta tabla (pág. 196) nos muestra estadísticas descriptivas de los participantes en el programa, disgregando por sexo. Sólo se tienen en cuenta las personas a las que se les pudo hacer la entrevista pre en 2004 y la entrevista post en 2006. Para eliminar a la gente que "desapareció" en ese tiempo, vamos a usar la función `subset()`; con `NROW()` podemos también calcular a cuánta gente no se le pudo hacer encuesta de seguimiento:
 
 ```{r}
 library(foreign) # Importamos el paquete foreign para poder usar la función read.dta()
@@ -58,7 +58,7 @@ desv <- aggregate(datos_presentes$educ_lb, by=list(datos_presentes$dwomen), FUN=
 round( desv , 2 )
 ```
 
-En este caso los números son ligeramente diferentes. Aparentemente esto se debe a que los investigadores hicieron un redondeo más extremo:
+En este caso los números son ligeramente diferentes. Aparentemente esto se debe a diferencias algorítmicas entre Stata y R o a que los investigadores hicieron un redondeo más extremo:
 
 ```{r}
 desv <- aggregate(datos_presentes$educ_lb, by=list(datos_presentes$dwomen), FUN=sd, na.rm=TRUE)
@@ -104,7 +104,7 @@ table(datos_presentes$select)
 table(datos_presentes[,c("select","dwomen")])
 ```
 
-¿Para qué sirve el comando `c()`? Para crear vectores. En este caso creamos u vector con los nombres de las columnas y le dijimos a R que sólo tuviera en cuenta esas columnas. Un vector sencillo:
+¿Para qué sirve el comando `c()`? Para crear vectores. En este caso creamos un vector con los nombres de las columnas y le dijimos a R que sólo tuviera en cuenta esas columnas. Un vector sencillo:
 
 ```{r}
 vector_sencillo <- c(1,2,3,4,5,888)
@@ -113,6 +113,13 @@ vector_con_letras <- c(vector_sencillo, "hola")
 vector_con_letras
 ```
 
+## Contenido
+
+1. [Preliminares](preliminares.md)
+1. [Exploración inicial de los datos](exploracion.md)
+1. [Estadísticas descriptivas en línea de base](tabla2.md)
+1. [Tabla de balance](tabla3.md)
+1. [Tabla de resultados](tablaresultados.md)
 
 
 
